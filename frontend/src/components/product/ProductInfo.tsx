@@ -1,0 +1,151 @@
+import React, { useState } from 'react';
+import { Star, Heart, ShoppingBag, ChevronDown, ChevronUp, Ruler } from 'lucide-react';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+
+interface ProductInfoProps {
+  product: any;
+}
+
+const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
+  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [openAccordion, setOpenAccordion] = useState<string | null>('description');
+
+  const toggleAccordion = (id: string) => {
+    setOpenAccordion(openAccordion === id ? null : id);
+  };
+
+  return (
+    <div className="flex flex-col">
+      {/* Breadcrumbs */}
+      <div className="flex items-center space-x-2 font-body text-xs text-kirti-brown uppercase tracking-widest mb-6">
+        <Link to="/" className="hover:text-kirti-dark-brown transition-colors">Home</Link>
+        <span>/</span>
+        <Link to={`/collections/${product.category.toLowerCase()}`} className="hover:text-kirti-dark-brown transition-colors">{product.category}</Link>
+        <span>/</span>
+        <span className="text-kirti-dark-brown">{product.name}</span>
+      </div>
+
+      <h1 className="font-display text-3xl md:text-5xl text-kirti-dark-brown uppercase tracking-widest mb-2">
+        {product.name}
+      </h1>
+
+      <div className="flex items-center space-x-4 mb-6">
+        <div className="flex text-kirti-gold">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={14} fill={i < 4 ? "currentColor" : "none"} />
+          ))}
+        </div>
+        <a href="#reviews" className="font-body text-xs text-kirti-brown underline uppercase tracking-widest">
+          12 Reviews
+        </a>
+      </div>
+
+      <div className="flex items-baseline space-x-4 mb-8">
+        <span className="font-body text-2xl text-kirti-dark-brown font-medium">₹{product.price.toLocaleString('en-IN')}</span>
+        {product.mrp > product.price && (
+          <span className="font-body text-sm text-kirti-brown/50 line-through">₹{product.mrp.toLocaleString('en-IN')}</span>
+        )}
+      </div>
+
+      <div className="w-full h-[1px] bg-kirti-border/50 mb-8" />
+
+      {/* Colors */}
+      <div className="mb-8">
+        <div className="flex justify-between items-center mb-3">
+          <span className="font-body text-sm uppercase tracking-widest text-kirti-dark-brown">Color: <span className="text-kirti-brown">{selectedColor.name}</span></span>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {product.colors.map((color: any) => (
+            <button
+              key={color.name}
+              onClick={() => setSelectedColor(color)}
+              className={clsx(
+                "w-8 h-8 rounded-full border-2 transition-all",
+                selectedColor.name === color.name ? "border-kirti-gold scale-110 shadow-md" : "border-gray-200 hover:border-kirti-brown"
+              )}
+              style={{ backgroundColor: color.hex }}
+              title={color.name}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Sizes */}
+      <div className="mb-10">
+        <div className="flex justify-between items-center mb-3">
+          <span className="font-body text-sm uppercase tracking-widest text-kirti-dark-brown">Size: <span className="text-kirti-brown">{selectedSize || 'Select a size'}</span></span>
+          <button className="flex items-center space-x-1 font-body text-xs text-kirti-brown hover:text-kirti-gold transition-colors underline uppercase tracking-widest">
+            <Ruler size={14} />
+            <span>Size Guide</span>
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {product.sizes.map((size: string) => (
+            <button
+              key={size}
+              onClick={() => setSelectedSize(size)}
+              className={clsx(
+                "h-10 px-4 border text-sm font-body uppercase tracking-wider transition-colors min-w-[3rem]",
+                selectedSize === size 
+                  ? "bg-kirti-dark-brown border-kirti-dark-brown text-white" 
+                  : "border-kirti-border text-kirti-brown hover:border-kirti-gold"
+              )}
+            >
+              {size}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="flex space-x-4 mb-12">
+        <button className="flex-1 bg-kirti-dark-brown text-white h-14 flex items-center justify-center space-x-2 hover:bg-kirti-gold transition-colors">
+          <ShoppingBag size={20} strokeWidth={1.5} />
+          <span className="font-body text-sm uppercase tracking-widest font-medium">Add to Cart</span>
+        </button>
+        <button className="w-14 h-14 border border-kirti-border flex items-center justify-center text-kirti-brown hover:text-kirti-gold hover:border-kirti-gold transition-colors flex-shrink-0">
+          <Heart size={24} strokeWidth={1.5} />
+        </button>
+      </div>
+
+      {/* Accordions */}
+      <div className="border-t border-kirti-border/50">
+        {[
+          { id: 'description', title: 'Description', content: product.description },
+          { id: 'fit', title: 'Fit & Sizing', content: 'Tailored for a perfect slim fit. Model is 6\'1" wearing size 40. True to size. Custom alterations available at our Dadar store.' },
+          { id: 'delivery', title: 'Delivery & Returns', content: 'Free shipping across India. Standard delivery within 5-7 working days. Returns accepted within 14 days of delivery for unworn items with tags attached.' }
+        ].map((section) => (
+          <div key={section.id} className="border-b border-kirti-border/50">
+            <button
+              onClick={() => toggleAccordion(section.id)}
+              className="w-full flex justify-between items-center py-4 text-left group"
+            >
+              <span className="font-display text-lg uppercase tracking-wider text-kirti-dark-brown group-hover:text-kirti-gold transition-colors">
+                {section.title}
+              </span>
+              {openAccordion === section.id ? (
+                <ChevronUp size={20} className="text-kirti-brown" />
+              ) : (
+                <ChevronDown size={20} className="text-kirti-brown" />
+              )}
+            </button>
+            <div
+              className={clsx(
+                "overflow-hidden transition-all duration-300",
+                openAccordion === section.id ? "max-h-96 pb-6 opacity-100" : "max-h-0 opacity-0"
+              )}
+            >
+              <p className="font-body text-sm text-kirti-brown leading-relaxed whitespace-pre-line">
+                {section.content}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductInfo;

@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kirti-ivory: #F7EEDC;
+  --color-kirti-cream: #EFE0C5;
+  --color-kirti-brown: #3D2A1B;
+  --color-kirti-dark-brown: #291B12;
+  --color-kirti-gold: #B8860B;
+  --color-kirti-dark-gold: #8A5A08;
+  --color-kirti-maroon: #641F25;
+  --color-kirti-white: #FFFFFF;
+  --color-kirti-border: #D8C5A3;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Montserrat", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-kirti-ivory);
+    color: var(--color-kirti-brown);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-kirti-dark-brown);
+  }
+}

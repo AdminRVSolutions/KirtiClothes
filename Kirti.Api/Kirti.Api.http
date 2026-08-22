@@ -1,0 +1,6 @@
+@Kirti.Api_HostAddress = http://localhost:5029
+
+GET {{Kirti.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

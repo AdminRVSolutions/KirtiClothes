@@ -1,0 +1,106 @@
+Building...
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Role] = N'admin') THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Categories] AS [c]) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Products] AS [p]) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5029
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /home/aniket/Documents/Personnel/Kirti Clothes Shop/Kirti.Api
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (19ms) [Parameters=[@__request_Phone_0='?' (Size = 4000), @__request_Password_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Dob], [u].[Email], [u].[FirstName], [u].[Gender], [u].[LastName], [u].[NewsletterSubscribed], [u].[PasswordHash], [u].[Phone], [u].[Role], [u].[TermsAccepted]
+      FROM [Users] AS [u]
+      WHERE [u].[Phone] = @__request_Phone_0 AND [u].[PasswordHash] = @__request_Password_1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
+      FROM [Products] AS [p]
+      INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]

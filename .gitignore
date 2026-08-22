@@ -1,0 +1,18 @@
+node_modules/
+dist/
+build/
+.env
+
+# .NET Core
+bin/
+obj/
+appsettings.Development.json
+*.db
+*.db-journal
+
+# VS Code
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
