@@ -16,15 +16,15 @@ const ProductDetail: React.FC = () => {
         // Format product images to ensure full paths
         // Extract unique sizes and colors from variants
         const variants = data.variants || [];
-        const uniqueColors = Array.from(new Set(variants.map((v: any) => v.color)));
-        const uniqueSizes = Array.from(new Set(variants.map((v: any) => v.size)));
+        const uniqueColors = Array.from(new Set(variants.map((v: any) => v.color))) as string[];
+        const uniqueSizes = Array.from(new Set(variants.map((v: any) => v.size))) as string[];
         
         const formattedProduct = {
           ...data,
           category: data.category?.name || 'Uncategorized',
           mrp: data.price * 1.2,
           images: data.images?.length > 0 ? data.images.map((img: string) => `${API_BASE}${img}`) : [`${API_BASE}${data.imageUrl}`],
-          colors: uniqueColors.map((c: string) => ({ name: c, hex: '#C0C0C0' })), // Using placeholder hex for now
+          colors: uniqueColors.map(c => ({ name: c, hex: '#C0C0C0' })), // Using placeholder hex for now
           sizes: uniqueSizes,
           variants: variants
         };
