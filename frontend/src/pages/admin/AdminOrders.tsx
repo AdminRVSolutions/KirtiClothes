@@ -12,6 +12,14 @@ const mockOrders = [
 
 const AdminOrders: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+
+  const filteredOrders = mockOrders.filter(order => {
+    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          order.customer.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStatus = statusFilter === 'all' || order.status.toLowerCase() === statusFilter.toLowerCase();
+    return matchesSearch && matchesStatus;
+  });
 
   return (
     <AdminLayout>
@@ -32,7 +40,11 @@ const AdminOrders: React.FC = () => {
             <Search size={16} className="absolute left-3 top-2.5 text-gray-400" />
           </div>
           <div className="flex space-x-2">
-            <select className="border border-gray-300 rounded-md px-3 py-2 font-body text-sm focus:outline-none focus:border-kirti-gold">
+            <select 
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="border border-gray-300 rounded-md px-3 py-2 font-body text-sm focus:outline-none focus:border-kirti-gold"
+            >
               <option value="all">All Statuses</option>
               <option value="processing">Processing</option>
               <option value="shipped">Shipped</option>
@@ -54,7 +66,7 @@ const AdminOrders: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {mockOrders.map((order) => (
+              {filteredOrders.map((order) => (
                 <tr key={order.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 text-kirti-dark-brown font-medium">{order.id}</td>
                   <td className="px-6 py-4 text-gray-500">{order.date}</td>
@@ -77,6 +89,11 @@ const AdminOrders: React.FC = () => {
                   </td>
                 </tr>
               ))}
+              {filteredOrders.length === 0 && (
+                <tr>
+                  <td colSpan={6} className="px-6 py-8 text-center text-gray-500">No orders found matching your criteria.</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

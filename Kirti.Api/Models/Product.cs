@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Kirti.Api.Models
 {
@@ -12,7 +13,8 @@ namespace Kirti.Api.Models
         public string ImageUrl { get; set; } = string.Empty;
         public List<string> Images { get; set; } = new List<string>();
         public int CategoryId { get; set; }
-        public Category Category { get; set; } = null!;
+        [JsonIgnore]
+        public Category? Category { get; set; }
         public string Gender { get; set; } = string.Empty; // "Men" or "Women"
         public List<ProductVariant> Variants { get; set; } = new List<ProductVariant>();
     }

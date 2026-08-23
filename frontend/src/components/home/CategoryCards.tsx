@@ -8,31 +8,31 @@ const categories = [
   {
     title: "Men's Sherwanis",
     description: "Royal silhouettes for the modern groom.",
-    image: `${API_BASE}/img/Men/type1/img1.avif`,
+    image: `${API_BASE}/img/Men/Sherwani/product_1/size_L/img1.avif`,
     link: "/collections/sherwanis"
   },
   {
     title: "Men's Indo-Western",
     description: "Contemporary Indian style with a refined edge.",
-    image: `${API_BASE}/img/Men/type2/img2.avif`,
+    image: `${API_BASE}/img/Men/Indo-Western/product_1/size_L/img1.avif`,
     link: "/collections/indo-western"
   },
   {
     title: "Men's Kurtas",
     description: "Elegant ethnic essentials for every occasion.",
-    image: `${API_BASE}/img/Men/type3/img1.avif`,
+    image: `${API_BASE}/img/Men/Kurtas/product_1/size_L/img1.avif`,
     link: "/collections/kurtas"
   },
   {
     title: "Women's Salwar Kameez",
     description: "Designed for the moments that matter most.",
-    image: `${API_BASE}/img/Woman/salwarkameej/img1.avif`,
+    image: `${API_BASE}/img/Woman/salwarkameej/product_1/size_L/img1.avif`,
     link: "/collections/womens-salwar"
   },
   {
     title: "Women's Ethnic Collection",
     description: "Complete your traditional look.",
-    image: `${API_BASE}/img/Woman/type1/img2.avif`,
+    image: `${API_BASE}/img/Woman/Lehengas/product_1/size_L/img1.avif`,
     link: "/collections/womens-ethnic"
   }
 ];

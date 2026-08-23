@@ -9,7 +9,7 @@ namespace Kirti.Api.Models
         public int ProductId { get; set; }
         
         [JsonIgnore]
-        public Product Product { get; set; } = null!;
+        public Product? Product { get; set; }
         
         public string Size { get; set; } = string.Empty;
         public string Color { get; set; } = string.Empty;

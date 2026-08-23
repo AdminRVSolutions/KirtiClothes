@@ -16,6 +16,7 @@ import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminSettings from './pages/admin/AdminSettings';
 import StoreLocator from './pages/StoreLocator';
+import About from './pages/About';
 
 function App() {
   const location = useLocation();
@@ -44,7 +45,7 @@ function App() {
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
-          <Route path="/about" element={<div className="py-32 text-center text-kirti-dark-brown font-display text-2xl">About Page Coming Soon</div>} />
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<div className="py-32 text-center text-kirti-dark-brown font-display text-2xl">Contact Page Coming Soon</div>} />
           <Route path="/store" element={<StoreLocator />} />
           <Route path="/collections/:slug" element={<Shop />} />

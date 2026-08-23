@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingBag, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { API_BASE } from '../../api';
 
 const mockProducts = [
   {
@@ -11,7 +12,7 @@ const mockProducts = [
     price: 35000,
     mrp: 42000,
     badge: "BESTSELLER",
-    image: "http://localhost:5029/img/imge3.webp"
+    image: `${API_BASE}/img/Men/Sherwani/product_1/size_L/img2.avif`
   },
   {
     id: 2,
@@ -20,7 +21,7 @@ const mockProducts = [
     price: 28500,
     mrp: 32000,
     badge: "NEW",
-    image: "http://localhost:5029/img/Men/type1/img1.avif"
+    image: `${API_BASE}/img/Men/Indo-Western/product_1/size_L/img2.avif`
   },
   {
     id: 3,
@@ -29,7 +30,7 @@ const mockProducts = [
     price: 45000,
     mrp: 55000,
     badge: "WEDDING EDIT",
-    image: "http://localhost:5029/img/Men/type2/img2.avif"
+    image: `${API_BASE}/img/Woman/salwarkameej/product_1/size_L/img2.avif`
   },
   {
     id: 4,
@@ -38,7 +39,7 @@ const mockProducts = [
     price: 8500,
     mrp: 9500,
     badge: "",
-    image: "http://localhost:5029/img/Woman/type1/img1.avif"
+    image: `${API_BASE}/img/Men/Kurtas/product_1/size_L/img2.avif`
   }
 ];
 

@@ -92,15 +92,15 @@ using (var scope = app.Services.CreateScope())
                 Slug = "royal-ivory-silk-sherwani",
                 Description = "A premium silk sherwani perfect for weddings.",
                 Price = 35000,
-                ImageUrl = "/img/Men/type1/img1.avif",
-                Images = new List<string> { "/img/Men/type1/img1.avif", "/img/Men/type1/img2.avif", "/img/Men/type1/img3.avif", "/img/Men/type1/img4.avif" },
+                ImageUrl = "/img/Men/Sherwani/product_1/size_L/img1.avif",
+                Images = new List<string> { "/img/Men/Sherwani/product_1/size_L/img1.avif", "/img/Men/Sherwani/product_1/size_L/img2.avif", "/img/Men/Sherwani/product_1/size_L/img3.avif", "/img/Men/Sherwani/product_1/size_L/img4.avif" },
                 CategoryId = menCategory.Id,
                 Gender = "Men",
                 Variants = new List<Kirti.Api.Models.ProductVariant> 
                 { 
-                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Ivory", Stock = 12, MainImage = "/img/Men/type1/img1.avif" },
-                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Ivory", Stock = 12, MainImage = "/img/Men/type1/img1.avif" },
-                    new Kirti.Api.Models.ProductVariant { Size = "XL", Color = "Ivory", Stock = 12, MainImage = "/img/Men/type1/img1.avif" }
+                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Ivory", Stock = 12, MainImage = "/img/Men/Sherwani/product_1/size_L/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Ivory", Stock = 12, MainImage = "/img/Men/Sherwani/product_1/size_L/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "XL", Color = "Ivory", Stock = 12, MainImage = "/img/Men/Sherwani/product_1/size_L/img1.avif" }
                 }
             },
             new Kirti.Api.Models.Product
@@ -109,15 +109,15 @@ using (var scope = app.Services.CreateScope())
                 Slug = "midnight-blue-indo-western",
                 Description = "Stylish indo-western suit for modern men.",
                 Price = 28500,
-                ImageUrl = "/img/Men/type2/img1.avif",
-                Images = new List<string> { "/img/Men/type2/img1.avif", "/img/Men/type2/img2.avif", "/img/Men/type2/img3.avif", "/img/Men/type2/img4.avif" },
+                ImageUrl = "/img/Men/Indo-Western/product_1/size_L/img1.avif",
+                Images = new List<string> { "/img/Men/Indo-Western/product_1/size_L/img1.avif", "/img/Men/Indo-Western/product_1/size_L/img2.avif", "/img/Men/Indo-Western/product_1/size_L/img3.avif", "/img/Men/Indo-Western/product_1/size_L/img4.avif" },
                 CategoryId = menCategory.Id,
                 Gender = "Men",
                 Variants = new List<Kirti.Api.Models.ProductVariant> 
                 { 
-                    new Kirti.Api.Models.ProductVariant { Size = "S", Color = "Blue", Stock = 8, MainImage = "/img/Men/type2/img1.avif" },
-                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Blue", Stock = 8, MainImage = "/img/Men/type2/img1.avif" },
-                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Blue", Stock = 8, MainImage = "/img/Men/type2/img1.avif" }
+                    new Kirti.Api.Models.ProductVariant { Size = "S", Color = "Blue", Stock = 8, MainImage = "/img/Men/Indo-Western/product_1/size_L/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Blue", Stock = 8, MainImage = "/img/Men/Indo-Western/product_1/size_L/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Blue", Stock = 8, MainImage = "/img/Men/Indo-Western/product_1/size_L/img1.avif" }
                 }
             },
             new Kirti.Api.Models.Product
@@ -126,14 +126,14 @@ using (var scope = app.Services.CreateScope())
                 Slug = "golden-salwar-kameez",
                 Description = "Elegant golden salwar kameez with heavy embroidery.",
                 Price = 18500,
-                ImageUrl = "/img/Woman/salwarkameej/img1.avif",
-                Images = new List<string> { "/img/Woman/salwarkameej/img1.avif", "/img/Woman/salwarkameej/img2.avif", "/img/Woman/salwarkameej/img3.avif", "/img/Woman/salwarkameej/img4.avif" },
+                ImageUrl = "/img/Woman/salwarkameej/product_1/size_L/img1.avif",
+                Images = new List<string> { "/img/Woman/salwarkameej/product_1/size_L/img1.avif", "/img/Woman/salwarkameej/product_1/size_L/img2.avif", "/img/Woman/salwarkameej/product_1/size_L/img3.avif", "/img/Woman/salwarkameej/product_1/size_L/img4.avif" },
                 CategoryId = womenCategory.Id,
                 Gender = "Women",
                 Variants = new List<Kirti.Api.Models.ProductVariant> 
                 { 
-                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Gold", Stock = 5, MainImage = "/img/Woman/salwarkameej/img1.avif" },
-                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Gold", Stock = 5, MainImage = "/img/Woman/salwarkameej/img1.avif" }
+                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Gold", Stock = 5, MainImage = "/img/Woman/salwarkameej/product_1/size_L/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Gold", Stock = 5, MainImage = "/img/Woman/salwarkameej/product_1/size_L/img1.avif" }
                 }
             },
             new Kirti.Api.Models.Product
@@ -142,13 +142,13 @@ using (var scope = app.Services.CreateScope())
                 Slug = "classic-green-lehenga",
                 Description = "Traditional lehenga for festive occasions.",
                 Price = 45000,
-                ImageUrl = "/img/Woman/type1/img1.avif",
-                Images = new List<string> { "/img/Woman/type1/img1.avif", "/img/Woman/type1/img2.avif", "/img/Woman/type1/img3.avif" },
+                ImageUrl = "/img/Woman/Lehengas/product_1/size_L/img1.avif",
+                Images = new List<string> { "/img/Woman/Lehengas/product_1/size_L/img1.avif", "/img/Woman/Lehengas/product_1/size_L/img2.avif", "/img/Woman/Lehengas/product_1/size_L/img3.avif" },
                 CategoryId = womenCategory.Id,
                 Gender = "Women",
                 Variants = new List<Kirti.Api.Models.ProductVariant> 
                 { 
-                    new Kirti.Api.Models.ProductVariant { Size = "Free Size", Color = "Green", Stock = 2, MainImage = "/img/Woman/type1/img1.avif" }
+                    new Kirti.Api.Models.ProductVariant { Size = "Free Size", Color = "Green", Stock = 2, MainImage = "/img/Woman/Lehengas/product_1/size_L/img1.avif" }
                 }
             }
         );
