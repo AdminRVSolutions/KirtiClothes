@@ -3,9 +3,7 @@ import { ChevronRight, Lock, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-const mockCartItems = [
-  { id: 1, name: "Royal Ivory Silk Sherwani", price: 35000, color: "Ivory", size: "40", quantity: 1, image: "http://localhost:5029/img/imge3.webp" }
-];
+import { useCartStore } from '../store/cartStore';
 
 type Step = 'address' | 'payment' | 'success';
 
@@ -13,7 +11,9 @@ const Checkout: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<Step>('address');
   const [paymentMethod, setPaymentMethod] = useState('card');
 
-  const subtotal = 35000;
+  const { items } = useCartStore();
+
+  const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const tax = subtotal * 0.05;
   const total = subtotal + tax;
 
@@ -169,7 +169,7 @@ const Checkout: React.FC = () => {
               </h3>
               
               <div className="space-y-4 mb-6 border-b border-kirti-border/50 pb-6">
-                {mockCartItems.map(item => (
+                {items.map(item => (
                   <div key={item.id} className="flex gap-4">
                     <img src={item.image} alt={item.name} className="w-16 h-20 object-cover border border-kirti-border/30" />
                     <div className="flex-1">

@@ -23,7 +23,7 @@ const ProductDetail: React.FC = () => {
           ...data,
           category: data.category?.name || 'Uncategorized',
           mrp: data.price * 1.2,
-          images: data.images?.length > 0 ? data.images.map((img: string) => `${API_BASE}${img}`) : [`${API_BASE}${data.imageUrl}`],
+          images: data.images?.length > 0 ? data.images.map((img: string) => img.startsWith('http') ? img : `${API_BASE}${img}`) : (variants[0]?.images?.length > 0 ? variants[0].images.map((img: string) => img.startsWith('http') ? img : `${API_BASE}${img}`) : [`${API_BASE}${data.imageUrl || '/img/img2.webp'}`]),
           colors: uniqueColors.map(c => ({ name: c, hex: '#C0C0C0' })), // Using placeholder hex for now
           sizes: uniqueSizes,
           variants: variants
