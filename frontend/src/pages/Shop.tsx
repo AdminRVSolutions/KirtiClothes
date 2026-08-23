@@ -4,7 +4,7 @@ import FilterSidebar from '../components/shop/FilterSidebar';
 import SortDropdown from '../components/shop/SortDropdown';
 import ProductGrid from '../components/shop/ProductGrid';
 
-import { getProducts } from '../api';
+import { getProducts, API_BASE } from '../api';
 
 const Shop: React.FC = () => {
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -16,7 +16,7 @@ const Shop: React.FC = () => {
       const formatted = data.map((p: any) => ({
         ...p,
         category: p.category?.name || 'Uncategorized',
-        image: p.imageUrl ? `http://localhost:5029${p.imageUrl}` : '/img/img2.webp',
+        image: p.imageUrl ? `${API_BASE}${p.imageUrl}` : '/img/img2.webp',
         mrp: p.price * 1.2, // simulate MRP
       }));
       setProducts(formatted);

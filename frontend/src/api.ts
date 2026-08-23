@@ -1,8 +1,9 @@
 import axios from 'axios';
+export const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5029';
 
 // Create an Axios instance with base URL pointing to the .NET backend
 const api = axios.create({
-  baseURL: 'http://localhost:5029/api', // .NET backend port
+  baseURL: `${API_BASE}/api`, // Uses env variable in production
   headers: {
     'Content-Type': 'application/json',
   },

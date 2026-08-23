@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ProductGallery from '../components/product/ProductGallery';
 import ProductInfo from '../components/product/ProductInfo';
 import ProductGrid from '../components/shop/ProductGrid';
-import { getProduct, getProducts } from '../api';
+import { getProduct, getProducts, API_BASE } from '../api';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,7 +17,7 @@ const ProductDetail: React.FC = () => {
         const formattedProduct = {
           ...data,
           mrp: data.price * 1.2,
-          images: data.images?.length > 0 ? data.images.map((img: string) => `http://localhost:5029${img}`) : [`http://localhost:5029${data.imageUrl}`],
+          images: data.images?.length > 0 ? data.images.map((img: string) => `${API_BASE}${img}`) : [`${API_BASE}${data.imageUrl}`],
           colors: data.colors?.map((c: string) => ({ name: c, hex: '#C0C0C0' })) || []
         };
         setProduct(formattedProduct);
@@ -31,7 +31,7 @@ const ProductDetail: React.FC = () => {
           .map((p: any) => ({
             ...p,
             category: p.category?.name || 'Uncategorized',
-            image: `http://localhost:5029${p.imageUrl}`,
+            image: `${API_BASE}${p.imageUrl}`,
             mrp: p.price * 1.2,
           }));
         setCrossSellProducts(filtered);
