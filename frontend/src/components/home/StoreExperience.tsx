@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone } from 'lucide-react';
+import { API_BASE } from '../../api';
 
 const StoreExperience: React.FC = () => {
   return (
@@ -25,12 +26,12 @@ const StoreExperience: React.FC = () => {
             className="grid grid-cols-2 gap-4"
           >
             <div className="space-y-4">
-              <img src="http://localhost:5029/img/imge3.webp" alt="Store Interior" className="w-full h-48 md:h-64 object-cover" />
-              <img src="http://localhost:5029/img/Men/type1/img1.avif" alt="Clothing Displays" className="w-full h-64 md:h-80 object-cover" />
+              <img src={`${API_BASE}/img/Wedding_Woman.jpeg`} alt="Store Interior" className="w-full h-48 md:h-64 object-cover" />
+              <img src={`${API_BASE}/img/Sangeet_men.jpeg`} alt="Clothing Displays" className="w-full h-64 md:h-80 object-cover" />
             </div>
             <div className="space-y-4 pt-8 md:pt-12">
-              <img src="http://localhost:5029/img/Men/type2/img2.avif" alt="Sherwani Collection" className="w-full h-64 md:h-80 object-cover" />
-              <img src="http://localhost:5029/img/Woman/type1/img1.avif" alt="Customer Experience" className="w-full h-48 md:h-64 object-cover" />
+              <img src={`${API_BASE}/img/Men/Sherwani/product_1/size_L/img4.avif`} alt="Sherwani Collection" className="w-full h-64 md:h-80 object-cover" />
+              <img src={`${API_BASE}/img/Woman/Lehengas/product_1/size_L/img2.avif`} alt="Customer Experience" className="w-full h-48 md:h-64 object-cover" />
             </div>
           </motion.div>
 

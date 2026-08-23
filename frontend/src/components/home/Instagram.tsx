@@ -7,13 +7,15 @@ const InstagramIcon = ({ className, size = 24 }: { className?: string; size?: nu
   </svg>
 );
 
+import { API_BASE } from '../../api';
+
 const instagramImages = [
-  "http://localhost:5029/img/imge3.webp",
-  "http://localhost:5029/img/Men/type1/img1.avif",
-  "http://localhost:5029/img/Men/type2/img2.avif",
-  "http://localhost:5029/img/Woman/type1/img1.avif",
-  "http://localhost:5029/img/Woman/salwarkameej/img3.avif",
-  "http://localhost:5029/img/img2.webp"
+  `${API_BASE}/img/Men/Sherwani/product_1/size_L/img1.avif`,
+  `${API_BASE}/img/Men/Kurtas/product_1/size_L/img1.avif`,
+  `${API_BASE}/img/Men/Indo-Western/product_1/size_L/img2.avif`,
+  `${API_BASE}/img/Woman/Lehengas/product_1/size_L/img1.avif`,
+  `${API_BASE}/img/Woman/salwarkameej/product_1/size_L/img1.avif`,
+  `${API_BASE}/img/Woman/sarees/product_1/size_L/img1.avif`
 ];
 
 const Instagram: React.FC = () => {

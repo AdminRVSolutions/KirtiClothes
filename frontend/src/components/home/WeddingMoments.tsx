@@ -3,13 +3,15 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
+import { API_BASE } from '../../api';
+
 const moments = [
-  { title: "Engagement", image: "http://localhost:5029/img/Woman/salwarkameej/img3.avif", desc: "Refined subtlety for the beginning." },
-  { title: "Haldi", image: "http://localhost:5029/img/img2.webp", desc: "Vibrant hues for joyous traditions." },
-  { title: "Mehendi", image: "http://localhost:5029/img/imge3.webp", desc: "Comfortable elegance for the celebration." },
-  { title: "Sangeet", image: "http://localhost:5029/img/Men/type1/img1.avif", desc: "Dynamic silhouettes for the dance floor." },
-  { title: "Wedding", image: "http://localhost:5029/img/Men/type2/img2.avif", desc: "Majestic grandeur for the ceremony." },
-  { title: "Reception", image: "http://localhost:5029/img/Woman/type1/img1.avif", desc: "Sophisticated charm for the evening." }
+  { title: "Engagement", image: `${API_BASE}/img/Woman/Lehengas/product_1/size_L/img1.avif`, desc: "Refined subtlety for the beginning." },
+  { title: "Haldi", image: `${API_BASE}/img/Woman/salwarkameej/product_1/size_M/img2.avif`, desc: "Vibrant hues for joyous traditions." },
+  { title: "Mehendi", image: `${API_BASE}/img/Woman/Lehengas/product_1/size_L/img3.avif`, desc: "Comfortable elegance for the celebration." },
+  { title: "Sangeet", image: `${API_BASE}/img/Men/Sherwani/product_1/size_L/img1.avif`, desc: "Dynamic silhouettes for the dance floor." },
+  { title: "Wedding", image: `${API_BASE}/img/Men/Indo-Western/product_1/size_L/img2.avif`, desc: "Majestic grandeur for the ceremony." },
+  { title: "Reception", image: `${API_BASE}/img/Woman/sarees/product_1/size_L/img1.avif`, desc: "Sophisticated charm for the evening." }
 ];
 
 const WeddingMoments: React.FC = () => {

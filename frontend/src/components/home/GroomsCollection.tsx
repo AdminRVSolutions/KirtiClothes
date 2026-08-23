@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { API_BASE } from '../../api';
 
 const GroomsCollection: React.FC = () => {
   return (
     <section className="relative w-full overflow-hidden py-32 md:py-48 flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <img 
-          src="http://localhost:5029/img/Woman/salwarkameej/img3.avif" 
+          src={`${API_BASE}/img/Men/Sherwani/product_1/size_L/img3.avif`}
           alt="Groom's Collection" 
           className="w-full h-full object-cover object-center"
         />

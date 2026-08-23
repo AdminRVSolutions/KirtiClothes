@@ -21,6 +21,7 @@ const ProductDetail: React.FC = () => {
         
         const formattedProduct = {
           ...data,
+          category: data.category?.name || 'Uncategorized',
           mrp: data.price * 1.2,
           images: data.images?.length > 0 ? data.images.map((img: string) => `${API_BASE}${img}`) : [`${API_BASE}${data.imageUrl}`],
           colors: uniqueColors.map((c: string) => ({ name: c, hex: '#C0C0C0' })), // Using placeholder hex for now

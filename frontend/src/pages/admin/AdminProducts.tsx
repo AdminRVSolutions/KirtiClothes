@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, Search, X, Upload } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
-import { getProducts, getCategories, createCategory, createProduct, createProductVariant, deleteProduct, uploadProductImages, API_BASE } from '../../api';
+import { getProducts, getCategories, createCategory, createProduct, updateProduct, createProductVariant, deleteProduct, uploadProductImages, API_BASE } from '../../api';
 
 const AdminProducts: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -42,6 +42,8 @@ const AdminProducts: React.FC = () => {
     fetchInitialData();
   }, []);
 
+  const [isEditingMode, setIsEditingMode] = useState(false);
+
   const handleOpenModal = () => {
     setGender('Men');
     setCategoryId('');
@@ -56,6 +58,25 @@ const AdminProducts: React.FC = () => {
     setStock('10');
     setFiles(null);
     setMainImageIndex(0);
+    setIsEditingMode(false);
+    setIsModalOpen(true);
+  };
+
+  const handleEditProduct = (product: any) => {
+    setGender(product.gender || 'Men');
+    setCategoryId(product.categoryId?.toString() || '');
+    setNewCategoryName('');
+    setProductId(product.id.toString());
+    setNewProductName(product.name || '');
+    setPrice(product.price?.toString() || '');
+    setDescription(product.description || '');
+    setSize('');
+    setColor('');
+    setFabric(product.fabric || '');
+    setStock('10');
+    setFiles(null);
+    setMainImageIndex(0);
+    setIsEditingMode(true);
     setIsModalOpen(true);
   };
 
@@ -81,7 +102,7 @@ const AdminProducts: React.FC = () => {
       let finalProductId = parseInt(productId);
       let prodName = products.find(p => p.id === finalProductId)?.name || newProductName;
 
-      if (productId === 'new' || !productId) {
+      if (productId === 'new' || !productId || !isEditingMode) {
         const newProd = await createProduct({
           name: newProductName,
           slug: newProductName.toLowerCase().replace(/ /g, '-'),
@@ -89,12 +110,21 @@ const AdminProducts: React.FC = () => {
           description,
           gender,
           categoryId: finalCategoryId,
-          fabric,
-          stock: parseInt(stock),
-          imageUrl: '' // will be set by variant main image ideally, but keeping empty for now
+          imageUrl: '' 
         });
         finalProductId = newProd.id;
         prodName = newProd.name;
+      } else {
+        await updateProduct(finalProductId, {
+          id: finalProductId,
+          name: newProductName,
+          slug: newProductName.toLowerCase().replace(/ /g, '-'),
+          price: parseFloat(price),
+          description,
+          gender,
+          categoryId: finalCategoryId,
+          imageUrl: products.find(p => p.id === finalProductId)?.imageUrl || ''
+        });
       }
 
       // 3. Upload Images
@@ -114,16 +144,18 @@ const AdminProducts: React.FC = () => {
         uploadedUrls = uploadRes.urls;
       }
 
-      // 4. Create Variant
-      const mainImage = uploadedUrls.length > 0 ? uploadedUrls[mainImageIndex] || uploadedUrls[0] : '';
-      await createProductVariant(finalProductId, {
-        size,
-        color,
-        colorHex: '#C0C0C0', // simple default
-        stock: parseInt(stock),
-        mainImage,
-        images: uploadedUrls
-      });
+      // 4. Create Variant only if size and color are provided
+      if (size && color) {
+        const mainImage = uploadedUrls.length > 0 ? uploadedUrls[mainImageIndex] || uploadedUrls[0] : '';
+        await createProductVariant(finalProductId, {
+          size,
+          color,
+          colorHex: '#C0C0C0', // simple default
+          stock: parseInt(stock),
+          mainImage,
+          images: uploadedUrls
+        });
+      }
 
       setIsModalOpen(false);
       fetchInitialData();
@@ -239,15 +271,15 @@ const AdminProducts: React.FC = () => {
               {/* Step 4 & 5: Size & Color */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 rounded-md">
                 <div>
-                  <label className="block text-kirti-dark-brown font-medium uppercase tracking-wider text-xs mb-2">4. Variant Size</label>
-                  <input type="text" list="sizes" value={size} onChange={e => setSize(e.target.value)} required placeholder="e.g. M" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-kirti-gold bg-white" />
+                  <label className="block text-kirti-dark-brown font-medium uppercase tracking-wider text-xs mb-2">4. Variant Size (Optional)</label>
+                  <input type="text" list="sizes" value={size} onChange={e => setSize(e.target.value)} placeholder="e.g. M" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-kirti-gold bg-white" />
                   <datalist id="sizes">
                     {existingSizes.map((s, i) => <option key={i} value={s as string} />)}
                   </datalist>
                 </div>
                 <div>
-                  <label className="block text-kirti-dark-brown font-medium uppercase tracking-wider text-xs mb-2">5. Variant Color</label>
-                  <input type="text" list="colors" value={color} onChange={e => setColor(e.target.value)} required placeholder="e.g. Black" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-kirti-gold bg-white" />
+                  <label className="block text-kirti-dark-brown font-medium uppercase tracking-wider text-xs mb-2">5. Variant Color (Optional)</label>
+                  <input type="text" list="colors" value={color} onChange={e => setColor(e.target.value)} placeholder="e.g. Black" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-kirti-gold bg-white" />
                   <datalist id="colors">
                     {existingColors.map((c, i) => <option key={i} value={c as string} />)}
                   </datalist>
@@ -370,7 +402,7 @@ const AdminProducts: React.FC = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4 text-right space-x-3">
-                    <button className="text-kirti-brown hover:text-kirti-gold transition-colors" title="Edit">
+                    <button onClick={() => handleEditProduct(product)} className="text-kirti-brown hover:text-kirti-gold transition-colors" title="Edit">
                       <Edit2 size={16} />
                     </button>
                     <button onClick={() => handleDelete(product.id)} className="text-red-400 hover:text-red-600 transition-colors" title="Delete">
