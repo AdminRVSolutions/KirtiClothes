@@ -2,45 +2,12 @@ import React, { useState } from 'react';
 import { Minus, Plus, Trash2, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const mockCartItems = [
-  {
-    id: 1,
-    name: "Royal Ivory Silk Sherwani",
-    price: 35000,
-    color: "Ivory",
-    size: "40",
-    quantity: 1,
-    image: "http://localhost:5029/img/Woman/salwarkameej/img3.avif"
-  },
-  {
-    id: 4,
-    name: "Classic Beige Kurta Pyjama",
-    price: 8500,
-    color: "Beige",
-    size: "42",
-    quantity: 2,
-    image: "http://localhost:5029/img/img2.webp"
-  }
-];
+import { useCartStore } from '../store/cartStore';
 
 const Cart: React.FC = () => {
-  const [items, setItems] = useState(mockCartItems);
+  const { items, updateQuantity, removeItem } = useCartStore();
   const [promoCode, setPromoCode] = useState('');
   const navigate = useNavigate();
-
-  const updateQuantity = (id: number, delta: number) => {
-    setItems(items.map(item => {
-      if (item.id === id) {
-        const newQuantity = Math.max(1, item.quantity + delta);
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    }));
-  };
-
-  const removeItem = (id: number) => {
-    setItems(items.filter(item => item.id !== id));
-  };
 
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const tax = subtotal * 0.05; // 5% GST assumption
@@ -70,14 +37,14 @@ const Cart: React.FC = () => {
           <div className="lg:col-span-2 space-y-8">
             {items.map(item => (
               <div key={item.id} className="flex gap-6 pb-8 border-b border-kirti-border/30">
-                <Link to={`/products/${item.id}`} className="w-24 md:w-32 flex-shrink-0 bg-kirti-ivory">
+                <Link to={`/products/${item.productId}`} className="w-24 md:w-32 flex-shrink-0 bg-kirti-ivory">
                   <img src={item.image} alt={item.name} className="w-full aspect-[3/4] object-cover" />
                 </Link>
                 
                 <div className="flex-1 flex flex-col">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <Link to={`/products/${item.id}`} className="font-display text-lg md:text-xl text-kirti-dark-brown hover:text-kirti-gold transition-colors block mb-1">
+                      <Link to={`/products/${item.productId}`} className="font-display text-lg md:text-xl text-kirti-dark-brown hover:text-kirti-gold transition-colors block mb-1">
                         {item.name}
                       </Link>
                       <p className="font-body text-xs text-kirti-brown uppercase tracking-wider mb-1">Color: {item.color}</p>
@@ -90,11 +57,11 @@ const Cart: React.FC = () => {
                   
                   <div className="mt-auto flex justify-between items-end">
                     <div className="flex items-center border border-kirti-border h-10">
-                      <button onClick={() => updateQuantity(item.id, -1)} className="px-3 text-kirti-brown hover:text-kirti-dark-brown">
+                      <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-3 text-kirti-brown hover:text-kirti-dark-brown">
                         <Minus size={14} />
                       </button>
                       <span className="font-body text-sm w-8 text-center">{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, 1)} className="px-3 text-kirti-brown hover:text-kirti-dark-brown">
+                      <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-3 text-kirti-brown hover:text-kirti-dark-brown">
                         <Plus size={14} />
                       </button>
                     </div>

@@ -14,11 +14,18 @@ const ProductDetail: React.FC = () => {
     if (id) {
       getProduct(id).then(data => {
         // Format product images to ensure full paths
+        // Extract unique sizes and colors from variants
+        const variants = data.variants || [];
+        const uniqueColors = Array.from(new Set(variants.map((v: any) => v.color)));
+        const uniqueSizes = Array.from(new Set(variants.map((v: any) => v.size)));
+        
         const formattedProduct = {
           ...data,
           mrp: data.price * 1.2,
           images: data.images?.length > 0 ? data.images.map((img: string) => `${API_BASE}${img}`) : [`${API_BASE}${data.imageUrl}`],
-          colors: data.colors?.map((c: string) => ({ name: c, hex: '#C0C0C0' })) || []
+          colors: uniqueColors.map((c: string) => ({ name: c, hex: '#C0C0C0' })), // Using placeholder hex for now
+          sizes: uniqueSizes,
+          variants: variants
         };
         setProduct(formattedProduct);
       });

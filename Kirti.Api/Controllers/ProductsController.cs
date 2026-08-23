@@ -19,13 +19,13 @@ namespace Kirti.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.Include(p => p.Category).ToListAsync();
+            return await _context.Products.Include(p => p.Category).Include(p => p.Variants).ToListAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _context.Products.Include(p => p.Category).Include(p => p.Variants).FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
             {
@@ -55,6 +55,22 @@ namespace Kirti.Api.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+        }
+
+        [HttpPost("{id}/variants")]
+        public async Task<ActionResult<ProductVariant>> PostProductVariant(int id, ProductVariant variant)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound("Product not found");
+            }
+
+            variant.ProductId = id;
+            _context.ProductVariants.Add(variant);
+            await _context.SaveChangesAsync();
+
+            return Ok(variant);
         }
 
         [HttpPut("{id}")]

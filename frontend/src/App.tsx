@@ -1,5 +1,5 @@
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -15,11 +15,15 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminSettings from './pages/admin/AdminSettings';
+import StoreLocator from './pages/StoreLocator';
 
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      {!isAdminRoute && <Header />}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -42,11 +46,11 @@ function App() {
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/about" element={<div className="py-32 text-center text-kirti-dark-brown font-display text-2xl">About Page Coming Soon</div>} />
           <Route path="/contact" element={<div className="py-32 text-center text-kirti-dark-brown font-display text-2xl">Contact Page Coming Soon</div>} />
-          <Route path="/store" element={<div className="py-32 text-center text-kirti-dark-brown font-display text-2xl">Store Locator Coming Soon</div>} />
-          <Route path="/collections/:slug" element={<div className="py-32 text-center text-kirti-dark-brown font-display text-2xl">Collection Coming Soon</div>} />
+          <Route path="/store" element={<StoreLocator />} />
+          <Route path="/collections/:slug" element={<Shop />} />
         </Routes>
       </main>
-      <Footer />
+      {!isAdminRoute && <Footer />}
     </div>
   );
 }

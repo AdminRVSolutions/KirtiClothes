@@ -39,6 +39,16 @@ export const getCategories = async () => {
   return response.data;
 };
 
+export const createCategory = async (categoryData: any) => {
+  const response = await api.post('/categories', categoryData);
+  return response.data;
+};
+
+export const createProductVariant = async (productId: number, variantData: any) => {
+  const response = await api.post(`/products/${productId}/variants`, variantData);
+  return response.data;
+};
+
 export const createOrder = async (orderData: any) => {
   const response = await api.post('/orders', orderData);
   return response.data;
@@ -56,6 +66,15 @@ export const registerUser = async (userData: any) => {
 
 export const loginUser = async (credentials: any) => {
   const response = await api.post('/auth/login', credentials);
+  return response.data;
+};
+
+export const uploadProductImages = async (formData: FormData) => {
+  const response = await api.post('/uploads/product-images', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return response.data;
 };
 

@@ -104,3 +104,5 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       SELECT [p].[Id], [p].[CategoryId], [p].[Colors], [p].[Description], [p].[Fabric], [p].[Gender], [p].[ImageUrl], [p].[Images], [p].[Name], [p].[Price], [p].[Sizes], [p].[Slug], [p].[Stock], [c].[Id], [c].[Name], [c].[Slug]
       FROM [Products] AS [p]
       INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...

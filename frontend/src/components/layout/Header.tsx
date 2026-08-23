@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import Logo from '../ui/Logo';
 import { DesktopNavigation, MobileNavigation } from './Navigation';
 import AnnouncementBar from './AnnouncementBar';
+import { useCartStore } from '../../store/cartStore';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const cartItems = useCartStore((state) => state.items);
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,9 +62,11 @@ const Header: React.FC = () => {
             </Link>
             <Link to="/cart" className="relative text-kirti-dark-brown hover:text-kirti-gold transition-colors">
               <ShoppingBag size={22} strokeWidth={1.5} />
-              <span className="absolute -top-1 -right-1 bg-kirti-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-body">
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-kirti-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-body">
+                  {cartCount}
+                </span>
+              )}
             </Link>
           </div>
         </div>

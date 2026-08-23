@@ -4,11 +4,8 @@ import { Link } from 'react-router-dom';
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Shop', path: '/shop' },
-  { name: 'Sherwanis', path: '/collections/sherwanis' },
-  { name: 'Indo-Western', path: '/collections/indo-western' },
-  { name: 'Kurtas', path: '/collections/kurtas' },
-  { name: 'Groom\'s Collection', path: '/collections/grooms-collection' },
-  { name: 'Wedding Wear', path: '/collections/wedding-wear' },
+  { name: 'Men', path: '/collections/men' },
+  { name: 'Women', path: '/collections/women' },
   { name: 'Accessories', path: '/collections/accessories' },
   { name: 'About', path: '/about' },
 ];

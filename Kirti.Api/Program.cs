@@ -96,10 +96,12 @@ using (var scope = app.Services.CreateScope())
                 Images = new List<string> { "/img/Men/type1/img1.avif", "/img/Men/type1/img2.avif", "/img/Men/type1/img3.avif", "/img/Men/type1/img4.avif" },
                 CategoryId = menCategory.Id,
                 Gender = "Men",
-                Sizes = new List<string> { "M", "L", "XL" },
-                Colors = new List<string> { "Ivory" },
-                Fabric = "Silk",
-                Stock = 12
+                Variants = new List<Kirti.Api.Models.ProductVariant> 
+                { 
+                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Ivory", Stock = 12, MainImage = "/img/Men/type1/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Ivory", Stock = 12, MainImage = "/img/Men/type1/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "XL", Color = "Ivory", Stock = 12, MainImage = "/img/Men/type1/img1.avif" }
+                }
             },
             new Kirti.Api.Models.Product
             {
@@ -111,10 +113,12 @@ using (var scope = app.Services.CreateScope())
                 Images = new List<string> { "/img/Men/type2/img1.avif", "/img/Men/type2/img2.avif", "/img/Men/type2/img3.avif", "/img/Men/type2/img4.avif" },
                 CategoryId = menCategory.Id,
                 Gender = "Men",
-                Sizes = new List<string> { "S", "M", "L" },
-                Colors = new List<string> { "Blue" },
-                Fabric = "Velvet",
-                Stock = 8
+                Variants = new List<Kirti.Api.Models.ProductVariant> 
+                { 
+                    new Kirti.Api.Models.ProductVariant { Size = "S", Color = "Blue", Stock = 8, MainImage = "/img/Men/type2/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Blue", Stock = 8, MainImage = "/img/Men/type2/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Blue", Stock = 8, MainImage = "/img/Men/type2/img1.avif" }
+                }
             },
             new Kirti.Api.Models.Product
             {
@@ -126,10 +130,11 @@ using (var scope = app.Services.CreateScope())
                 Images = new List<string> { "/img/Woman/salwarkameej/img1.avif", "/img/Woman/salwarkameej/img2.avif", "/img/Woman/salwarkameej/img3.avif", "/img/Woman/salwarkameej/img4.avif" },
                 CategoryId = womenCategory.Id,
                 Gender = "Women",
-                Sizes = new List<string> { "M", "L" },
-                Colors = new List<string> { "Gold" },
-                Fabric = "Georgette",
-                Stock = 5
+                Variants = new List<Kirti.Api.Models.ProductVariant> 
+                { 
+                    new Kirti.Api.Models.ProductVariant { Size = "M", Color = "Gold", Stock = 5, MainImage = "/img/Woman/salwarkameej/img1.avif" },
+                    new Kirti.Api.Models.ProductVariant { Size = "L", Color = "Gold", Stock = 5, MainImage = "/img/Woman/salwarkameej/img1.avif" }
+                }
             },
             new Kirti.Api.Models.Product
             {
@@ -141,10 +146,10 @@ using (var scope = app.Services.CreateScope())
                 Images = new List<string> { "/img/Woman/type1/img1.avif", "/img/Woman/type1/img2.avif", "/img/Woman/type1/img3.avif" },
                 CategoryId = womenCategory.Id,
                 Gender = "Women",
-                Sizes = new List<string> { "Free Size" },
-                Colors = new List<string> { "Green" },
-                Fabric = "Silk",
-                Stock = 2
+                Variants = new List<Kirti.Api.Models.ProductVariant> 
+                { 
+                    new Kirti.Api.Models.ProductVariant { Size = "Free Size", Color = "Green", Stock = 2, MainImage = "/img/Woman/type1/img1.avif" }
+                }
             }
         );
         context.SaveChanges();

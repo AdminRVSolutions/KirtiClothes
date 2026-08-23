@@ -14,9 +14,6 @@ namespace Kirti.Api.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; } = null!;
         public string Gender { get; set; } = string.Empty; // "Men" or "Women"
-        public List<string> Sizes { get; set; } = new List<string>();
-        public List<string> Colors { get; set; } = new List<string>();
-        public string Fabric { get; set; } = string.Empty;
-        public int Stock { get; set; }
+        public List<ProductVariant> Variants { get; set; } = new List<ProductVariant>();
     }
 }
